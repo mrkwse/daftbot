@@ -1,0 +1,4 @@
+# Ignore compiled modules
+*.pyc
+# Ignore virtualenv files
+venv
