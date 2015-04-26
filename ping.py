@@ -1,5 +1,7 @@
 import requests
 import logging
+import json
+from tornado.escape import json_encode
 
 """
 Quick test script to check responses
@@ -19,9 +21,17 @@ something = {
   "user_id": "1234567890"
 }
 
-requests.post("http://127.0.0.1:5000/", params=something)
-logging.warning("root")
-requests.post("http://127.0.0.1:5000/PS4/", params=something)
-logging.warning("PS4")
-requests.post("http://127.0.0.1:5000/PC/", params=something)
-logging.warning("PC")
+something_json = json_encode(something)
+
+requests.post("http://127.0.0.1:5000/", data=something_json)
+logging.warning("world")
+
+something["text"] = "Hello TARS"
+something_json = json_encode(something)
+
+requests.post("http://127.0.0.1:5000/", data=something_json)
+logging.warning("hello tars")
+# requests.post("http://127.0.0.1:5000/PS4/", data=something_json)
+# logging.warning("PS4")
+# requests.post("http://127.0.0.1:5000/PC/", data=something_json)
+# logging.warning("PC")
