@@ -53,8 +53,12 @@ Handler for requests receieved at /PS4/
 class PS4Handler(web.RequestHandler):
 
     bot_id = "6e617730812cdada18295db1a7"
+    room = "PS4"
 
-    response = {"bot_id" : bot_id, "text" : "Hello PS4 users!"}
+    """
+    Instantiate parser with id and room name
+    """
+    parser = parser.DefaultParser(bot_id=bot_id, room=room)
 
     def post(self):
 
@@ -67,8 +71,10 @@ class PS4Handler(web.RequestHandler):
         Conditional to prevent replying to self
         """
         if request["sender_type"] == "user":
-
-            requests.post("https://api.groupme.com/v3/bots/post", params=self.response)
+            """
+            Send to parser to process.
+            """
+            self.parser.parse(request)
 
 """
 Handler for requests received at /PC/
@@ -76,8 +82,12 @@ Handler for requests received at /PC/
 class PCHandler(web.RequestHandler):
 
     bot_id = "28f9f4aa21d19de60f2092cab9"
+    room = "PC"
 
-    response = {"bot_id" : bot_id, "text" : "Hello PC users!"}
+    """
+    Instantiate parser with id and room name
+    """
+    parser = parser.DefaultParser(bot_id=bot_id, room=room)
 
     def post(self):
         """
@@ -89,4 +99,7 @@ class PCHandler(web.RequestHandler):
         Conditional to prevent replying to self
         """
         if request["sender_type"] == "user":
-            requests.post("https://api.groupme.com/v3/bots/post", params=self.response)
+            """
+            Send to parser to process.
+            """
+            self.parser.parse(request)

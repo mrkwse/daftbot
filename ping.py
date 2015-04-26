@@ -22,16 +22,16 @@ something = {
 }
 
 something_json = json_encode(something)
-
 requests.post("http://127.0.0.1:5000/", data=something_json)
+# requests.post("http://127.0.0.1:5000/PS4/", data=something_json)
+# requests.post("http://127.0.0.1:5000/PC/", data=something_json)
+
 logging.warning("world")
 
 something["text"] = "Hello TARS"
 something_json = json_encode(something)
 
 requests.post("http://127.0.0.1:5000/", data=something_json)
-logging.warning("hello tars")
 # requests.post("http://127.0.0.1:5000/PS4/", data=something_json)
-# logging.warning("PS4")
 # requests.post("http://127.0.0.1:5000/PC/", data=something_json)
-# logging.warning("PC")
+logging.warning("hello tars")
