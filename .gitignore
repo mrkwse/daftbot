@@ -1,4 +1,10 @@
 # Ignore compiled modules
 *.pyc
+__pycache__
 # Ignore virtualenv files
 venv
+
+.swp
+
+# Ignore working files
+/Junk/
